@@ -1,0 +1,10 @@
+<h1>{{ book.title }}</h1>
+
+<ul>
+    <li>
+        <b>Auteur</b> : <a href="{% url 'library:author_detail' book.author.id %}">{{ book.author }}</a>
+    </li>
+    <li>
+        <b>Livre lu</b>: {{ book.has_been_read }}
+    </li>
+</ul>
