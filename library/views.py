@@ -30,6 +30,7 @@ class AuthorListView(generic.ListView):
     def get_queryset(self):
         return Author.objects.all()
 
-class AuthorDetailView(generic.DetailView):
-    model = Author
-    template_name = 'library/author_detail.html'
+def AuthorDetailView(request, author_id):
+    author = get_object_or_404(Author, pk=author_id)
+    book_list = Book.objects.filter(author=author_id)
+    return render(request, 'library/author_detail.html', {'author': author, 'book_list': book_list})
