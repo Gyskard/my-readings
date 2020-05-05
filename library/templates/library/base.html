@@ -1,0 +1,18 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>MyReadings</title>
+        <link rel="stylesheet" href="{% static 'library/dark.min.css' %}">
+        <!--
+        <script src="script.js"></script>
+        -->
+    </head>
+    <body>
+        <h1><a style="color: white; text-decoration: none;" href="{% url 'library:index' %}">MyReadings</a></h1>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

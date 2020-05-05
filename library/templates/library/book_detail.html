@@ -1,10 +1,14 @@
-<h1>{{ book.title }}</h1>
+{% extends 'library/base.html' %}
 
-<ul>
-    <li>
-        <b>Auteur</b> : <a href="{% url 'library:author_detail' book.author.id %}">{{ book.author }}</a>
-    </li>
-    <li>
-        <b>Livre lu</b>: {{ book.has_been_read }}
-    </li>
-</ul>
+{% block content %}
+<h2>{{ book.title }}</h2>
+    <section style="padding-top: 0.5em;">
+        <p style="visibility: hidden;">.</p>
+        <fieldset>
+            <legend>Book informations</legend>
+            <p style="padding-left: 0.7em;">
+                Written by <b><a href="{% url 'library:author_detail' book.author.id %}">{{ book.author }}</a></b>, {% if book.has_been_read %}read{% else %}unread{% endif %}.
+            </p>
+        </fieldset>
+    </section>
+{% endblock %}
