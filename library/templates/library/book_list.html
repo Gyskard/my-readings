@@ -1,13 +1,28 @@
 {% extends 'library/base.html' %}
 
+{% block title %}Book list{% endblock %}
+
 {% block content %}
-    {% if book_list %}
-        <ul>
-        {% for book in book_list %}
-            <li><a href="{% url 'library:book_detail' book.id %}">{{ book.title }}</a></li>
-        {% endfor %}
-        </ul>
+    <style>
+        #bookListLink {
+            font-weight: 600;
+        }
+    </style>
+    <section style="padding-top: 0.5em;">
+        {% if book_list %}
+            <p><b>{{ number_total_book }}</b> book{% if number_total_book > 1%}s{% endif %}.</p>
+            <fieldset>
+                <legend>Book list</legend>
+                <ul>
+                {% for book in book_list %}
+                    <li>
+                        <a href="{% url 'library:book_detail' book.id %}">{{ book.title }}</a>, <a href="{% url 'library:author_detail' book.author.id %}">{{ book.author }}</a>, {% if book.has_been_read %}read{% else %}unread{% endif %}.
+                    </li>
+                {% endfor %}
+                </ul>
+            </fieldset>
         {% else %}
-        <p>No books are available.</p>
-    {% endif %}
+            <p>No books are available.</p>
+        {% endif %}
+    </section>
 {% endblock %}

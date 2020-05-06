@@ -4,7 +4,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>MyReadings</title>
+        <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="{% static 'library/dark.min.css' %}">
         <!--
         <script src="script.js"></script>
@@ -12,6 +12,9 @@
     </head>
     <body>
         <h1><a style="color: white; text-decoration: none;" href="{% url 'library:index' %}">MyReadings</a></h1>
+        <h2 style="font-size: 1.1em; font-weight: normal;">
+            <a id="homeLink" href="{% url 'library:index' %}">Home</a> | <a id="bookListLink" href="{% url 'library:book_list' %}">Book list</a> | <a id="authorListLink" href="{% url 'library:author_list' %}">Author list</a> | <a href="#">Search</a>
+        </h2>
         {% block content %}
         {% endblock %}
     </body>

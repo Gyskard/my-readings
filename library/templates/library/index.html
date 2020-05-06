@@ -1,11 +1,17 @@
 {% extends 'library/base.html' %}
 
+{% block title %}Home{% endblock %}
+
 {% block content %}
-    <h2>Home</h2>
+    <style>
+        #homeLink {
+            font-weight: 600;
+        }
+    </style>
     <section style="padding-top: 0.5em;">
         <p><b>{{ number_read_book_list }}</b> book{% if number_read_book_list > 1%}s{% endif %} read out of <b>{{ number_total_book_list }}</b>.</p>
         <fieldset>
-            <legend>Book list</legend>
+            <legend>List of the last 10 books added</legend>
             {% if total_book_list %}
                 <ul>
                 {% for book in total_book_list %}
