@@ -30,8 +30,10 @@ class BookListView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         number_total_book = len(Book.objects.order_by())
+        number_read_book = len(Book.objects.filter(has_been_read=True))
         context = super(BookListView, self).get_context_data(**kwargs)
         context['number_total_book'] = number_total_book
+        context['number_read_book'] = number_read_book
         return context
 
 
