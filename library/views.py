@@ -72,3 +72,26 @@ def AuthorDetailView(request, author_id):
             'number_read_book_list': number_read_book_list
         }
     )
+
+
+class SearchView(generic.ListView):
+    template_name = 'library/search.html'
+    context_object_name = 'data'
+
+    def get_queryset(self):
+        context = {
+            'books': Book.objects.all().order_by('title'),
+            'authors': Author.objects.all().order_by('name')
+        }
+        return context
+
+    def get_context_data(self, **kwargs):
+
+        number_read_book = len(Book.objects.filter(has_been_read=True))
+        number_total_book = len(Book.objects.order_by())
+        number_total_author = len(Author.objects.order_by())
+        context = super(SearchView, self).get_context_data(**kwargs)
+        context['number_read_book'] = number_read_book
+        context['number_total_book'] = number_total_book
+        context['number_total_author'] = number_total_author
+        return context
