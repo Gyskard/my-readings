@@ -1,0 +1,18 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'library/dark.min.css' %}">
+    </head>
+    <body>
+        <h1><a style="color: white; text-decoration: none;" href="{% url 'library:index' %}">MyReadings</a></h1>
+        <h2 style="font-size: 1.1em; font-weight: normal;">
+            <a id="homeLink" href="{% url 'library:index' %}">Home</a> | <a id="searchLink" href="{% url 'library:search' %}">Search</a>
+        </h2>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
