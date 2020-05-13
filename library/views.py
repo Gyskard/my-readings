@@ -4,7 +4,6 @@ from django.db.models import Count, Q
 
 from .models import Book, Author
 
-
 class IndexView(generic.ListView):
     template_name = 'library/index.html'
     context_object_name = 'total_book_list'
@@ -14,11 +13,10 @@ class IndexView(generic.ListView):
         return total_book_list
 
     def get_context_data(self, **kwargs):
-        number_total_book_list = len(Book.objects.order_by())
-        number_read_book_list = len(Book.objects.filter(has_been_read=True))
         context = super(IndexView, self).get_context_data(**kwargs)
-        context['number_total_book_list'] = number_total_book_list
-        context['number_read_book_list'] = number_read_book_list
+        context['number_total_book_list'] = len(Book.objects.order_by())
+        context['number_read_book_list'] = len(Book.objects.filter(has_been_read=True))
+        context['number_author'] = len(Author.objects.order_by())
         return context
 
 class BookDetailView(generic.DetailView):
@@ -31,7 +29,6 @@ def AuthorDetailView(request, author_id):
     number_total_book_list = len(total_book_list)
     read_book_list = Book.objects.filter(author=author_id, has_been_read=True)
     number_read_book_list = len(read_book_list)
-
     return render(request, 'library/author_detail.html', {
             'author': author,
             'total_book_list': total_book_list,
@@ -39,7 +36,6 @@ def AuthorDetailView(request, author_id):
             'number_read_book_list': number_read_book_list
         }
     )
-
 
 class SearchView(generic.ListView):
     template_name = 'library/search.html'
