@@ -79,19 +79,10 @@ class SearchView(generic.ListView):
     context_object_name = 'data'
 
     def get_queryset(self):
+        number_all_book = Count('book')
+        number_read_book = Count('book', filter=Q(book__has_been_read=True))
         context = {
             'books': Book.objects.all().order_by('title'),
-            'authors': Author.objects.all().order_by('name')
+            'authors': Author.objects.all().annotate(number_all_book=number_all_book).annotate(number_read_book=number_read_book).order_by('name')
         }
-        return context
-
-    def get_context_data(self, **kwargs):
-
-        number_read_book = len(Book.objects.filter(has_been_read=True))
-        number_total_book = len(Book.objects.order_by())
-        number_total_author = len(Author.objects.order_by())
-        context = super(SearchView, self).get_context_data(**kwargs)
-        context['number_read_book'] = number_read_book
-        context['number_total_book'] = number_total_book
-        context['number_total_author'] = number_total_author
         return context
