@@ -87,9 +87,9 @@ DATABASES = {
     }
 }
 
-INTERNAL_IPS = [
-    '10.0.2.2',
-]
+#INTERNAL_IPS = [
+#    '10.0.2.2',
+#]
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
