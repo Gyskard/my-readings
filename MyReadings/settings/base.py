@@ -1,9 +1,8 @@
 import os
-import django_heroku
+#import django_heroku
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = 'w%&j=$w6t6%$+rn!kf4^*14*&&&!n2)hao1e2b+_jwv-r%b*66'
 
 ALLOWED_HOSTS = []
 
@@ -92,4 +91,4 @@ INTERNAL_IPS = [
 ]
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
