@@ -6,7 +6,7 @@
     <h2>{{ author.name }}</h2>
     <section>
         <p>
-            <b>{{ number_read_book_list }}</b> book{% if number_read_book_list > 1%}s{% endif %} read out of <b>{{ number_total_book_list }}</b>.
+            <b>{{ number_read_book_list }}</b> book{% if number_read_book_list > 0%}{% if number_read_book_list > 1%}s{% endif %} read out of <b>{{ number_total_book_list }}{% endif %}</b>.
         </p>
         <fieldset>
             <legend>Book list</legend>
