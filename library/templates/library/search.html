@@ -43,7 +43,7 @@
                     <ul class="jetsContent">
                     {% for author in data.authors %}
                         <li>
-                            <a href="{% url 'library:author_detail' author.id %}">{{ author.name }}</a>, <b>{{ author.number_read_book }}</b> book{% if author.number_total_book > 1%}s{% endif%} read out of <b>{{ author.number_all_book }}</b>.
+                            <a href="{% url 'library:author_detail' author.id %}">{{ author.name }}</a>, <b>{{ author.number_read_book }}</b> book{% if author.number_read_book > 0 %}{% if author.number_read_book > 1%}s{% endif %} read out of <b>{{ author.number_all_book }}{% endif %}</b>.
                         </li>
                     {% endfor %}
                     </ul>
