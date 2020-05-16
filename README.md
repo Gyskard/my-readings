@@ -78,13 +78,14 @@ python3 manage.py runserver --settings=MyReadings.settings.development
 
 The project is configured to work with [heroku](https://djecrety.ir/). There are three **Config Vars** :
 - DATABASE_URL = postgres://... *(automatic)*
-- DJANGO_SETTINGS_MODULe = MyReadings.settings.production
+- DJANGO_SETTINGS_MODULE = MyReadings.settings.production
 - SECRET_KEY = my_key *(You can generate one via [this site web](https://heroku.com/))*
 
 ## Built With
 
 * [Django](https://www.djangoproject.com/) - high-level Python Web framework.
   * [water.css](https://kognise.github.io/water.css/) - just-add-css collection of styles.
+  * [Jets.js](https://jets.js.org/) - native CSS search engine. 
   * [flake8](https://flake8.pycqa.org/en/latest/) - python library which verifies pep8.
   * [django-debug-toolbar](https://django-debug-toolbar.readthedocs.io/en/latest/) - set of panels that display various debug information.
   * [SQLite](https://www.sqlite.org/index.html) - C-language library that implements a SQL database engine. 
